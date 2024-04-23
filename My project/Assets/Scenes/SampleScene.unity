@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 1577133957}
   - component: {fileID: 1577133958}
   m_Layer: 0
-  m_Name: gate
+  m_Name: switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
