@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Operational
 {
-    public abstract class LogicGate : MonoBehaviour
+    public abstract class LogicalElement : MonoBehaviour
     {
         private LogicOperation logicOperation;
 
         [SerializeField]
-        private List<LogicGate> inputs;
+        private List<LogicalElement> inputs;
 
         public bool[] Inputs
         {
@@ -42,14 +42,14 @@ namespace Operational
             }
         }
 
-        public LogicGate(LogicOperation logicOperation)
+        public LogicalElement(LogicOperation logicOperation)
         {
             this.logicOperation = logicOperation;
         }
 
-        public void SetInputs(params LogicGate[] gates)
+        public void SetInputs(params LogicalElement[] gates)
         {
-            inputs = new List<LogicGate>(gates);
+            inputs = new List<LogicalElement>(gates);
         }
     }
 }
