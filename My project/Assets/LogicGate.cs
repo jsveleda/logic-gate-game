@@ -1,30 +1,55 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Operational
 {
-    public class LogicGate
+    public abstract class LogicGate : MonoBehaviour
     {
         private LogicOperation logicOperation;
 
-        private bool[] inputs;
+        [SerializeField]
+        private List<LogicGate> inputs;
+
+        public bool[] Inputs
+        {
+            get
+            {
+                List<bool> result = new();
+
+                inputs.ForEach(child =>
+                {
+                    result.Add(child.Output);
+                });
+
+                return result.ToArray();
+            }
+        }
+
+        [SerializeField]
+        private bool output;
 
         public bool Output
         {
             get
             {
-                if (inputs == null)
+                if (Inputs == null)
                 {
-                    throw new InvalidOperationException("Inputs not set");
+                    return output;
                 }
 
-                return logicOperation.Execute(inputs);
+                return logicOperation.Execute(Inputs);
             }
         }
 
         public LogicGate(LogicOperation logicOperation)
         {
-
             this.logicOperation = logicOperation;
+        }
+
+        public void SetInputs(params LogicGate[] gates)
+        {
+            inputs = new List<LogicGate>(gates);
         }
     }
 }
