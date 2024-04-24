@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace Operational
 {
-    public abstract class LogicalElement : MonoBehaviour
+    public partial class LogicalElement : MonoBehaviour
     {
+        [SerializeField]
+        private LogicOperations operationType;
         private LogicOperation logicOperation;
-        
+
         public Action<bool> OnOutputChanged;
 
         [SerializeField]
@@ -28,6 +30,7 @@ namespace Operational
             }
         }
 
+        [Header("Output if no Inputs")]
         [SerializeField]
         protected bool output;
 
@@ -52,17 +55,13 @@ namespace Operational
         private void Awake()
         {
             SubscribeToInputChanges();
+            logicOperation = LogicOperationFactory.CreateLogicOperation(operationType);
         }
 
         public void ToggleOutput()
         {
             output = !Output;
             OnOutputChanged?.Invoke(output);
-        }
-
-        public void SetLogicalOperation(LogicOperation logicOperation)
-        {
-            this.logicOperation = logicOperation;
         }
 
         /// <summary>

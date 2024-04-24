@@ -1,7 +1,13 @@
-﻿namespace Operational
+﻿using System;
+
+namespace Operational
 {
-    public abstract class LogicOperation
+    public class LogicOperation
     {
-        public abstract bool Execute(params bool[] inputs);
+        public virtual bool Execute(params bool[] inputs)
+        {
+            // Implement your logic here
+            return false;
+        }
     }
 }

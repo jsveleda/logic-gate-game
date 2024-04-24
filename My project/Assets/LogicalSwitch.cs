@@ -2,7 +2,7 @@
 {
     public class LogicalSwitch : LogicalElement
     {
-        public LogicalSwitch() : base(new OrOperation())
+        public LogicalSwitch(LogicOperation logicOperation) : base(logicOperation)
         {
 
         }
