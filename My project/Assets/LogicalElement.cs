@@ -27,7 +27,7 @@ namespace Operational
         }
 
         [SerializeField]
-        private bool output;
+        protected bool output;
 
         public bool Output
         {
