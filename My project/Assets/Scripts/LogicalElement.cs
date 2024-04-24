@@ -85,8 +85,18 @@ namespace Operational
         /// </remarks>
         private void OnInputChanged(bool newOutput)
         {
+            if (inputs == null || inputs.Count == 0)
+            {
+                return;
+            }
+
+            if (newOutput == output)
+            {
+                return;
+            }
+
             output = logicOperation.Execute(Inputs);
-            OnOutputChanged?.Invoke(newOutput);
+            OnOutputChanged?.Invoke(output);
         }
     }
 }

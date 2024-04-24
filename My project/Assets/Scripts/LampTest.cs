@@ -6,8 +6,13 @@ public class LampTest : MonoBehaviour
     [SerializeField]
     private LogicalElement and;
 
-    private void Update()
+    private void Awake()
     {
-        Debug.Log(and.Output);
+        and.OnOutputChanged += OnPiscou;
+    }
+
+    private void OnPiscou(bool _)
+    {
+        gameObject.SetActive(and.Output);
     }
 }
