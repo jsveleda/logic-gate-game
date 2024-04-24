@@ -4,35 +4,33 @@ using UnityEngine;
 
 namespace Operational
 {
-    public partial class LogicalElement : MonoBehaviour
+    public class LogicalElement : MonoBehaviour
     {
         [SerializeField]
-        private LogicOperationTypes operationType;
-        private LogicOperation logicOperation;
-
-        public Action<bool> OnOutputChanged;
-
+        private LogicOperationType operationType;
         [SerializeField]
         private List<LogicalElement> inputs;
+        [Header("Output if no Inputs")]
+        [SerializeField]
+        protected bool output;
 
+        private LogicOperation logicOperation;
+        public event Action<bool> OnOutputChanged;
+        
         public bool[] Inputs
         {
             get
             {
                 List<bool> result = new();
 
-                inputs.ForEach(child =>
+                foreach (LogicalElement child in inputs)
                 {
                     result.Add(child.Output);
-                });
+                }
 
                 return result.ToArray();
             }
         }
-
-        [Header("Output if no Inputs")]
-        [SerializeField]
-        protected bool output;
 
         public bool Output
         {
@@ -45,11 +43,6 @@ namespace Operational
 
                 return logicOperation.Execute(Inputs);
             }
-        }
-
-        public LogicalElement(LogicOperation logicOperation)
-        {
-            this.logicOperation = logicOperation;
         }
 
         private void Awake()
@@ -70,10 +63,15 @@ namespace Operational
         /// </summary>
         private void SubscribeToInputChanges()
         {
-            inputs.ForEach(input =>
+            if (inputs == null || inputs.Count == 0)
+            {
+                return;
+            }
+
+            foreach (LogicalElement input in inputs)
             {
                 input.OnOutputChanged += OnInputChanged;
-            });
+            }
         }
 
         /// <summary>

@@ -2,12 +2,8 @@
 
 namespace Operational
 {
-    public class LogicOperation
+    public abstract class LogicOperation
     {
-        public virtual bool Execute(params bool[] inputs)
-        {
-            // Implement your logic here
-            return false;
-        }
+        public abstract bool Execute(params bool[] inputs);
     }
 }
