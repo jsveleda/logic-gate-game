@@ -7,7 +7,7 @@ namespace Operational
     public partial class LogicalElement : MonoBehaviour
     {
         [SerializeField]
-        private LogicOperations operationType;
+        private LogicOperationTypes operationType;
         private LogicOperation logicOperation;
 
         public Action<bool> OnOutputChanged;
