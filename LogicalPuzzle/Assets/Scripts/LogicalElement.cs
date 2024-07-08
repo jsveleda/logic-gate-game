@@ -21,6 +21,8 @@ namespace Operational
         [Header("Places where inputs can attach conduits (if any)")]
         public List<Transform> inputConduitAnchorList;
 
+        private List<LineRenderer> conduits = new();
+
         public bool[] Inputs
         {
             get
@@ -53,7 +55,12 @@ namespace Operational
         {
             SubscribeToInputChanges();
             logicOperation = LogicOperationFactory.CreateLogicOperation(operationType);
+        }
+
+        private void Start()
+        {
             DrawConduits();
+            UpdateConduits();
         }
 
         #region Conduit
@@ -64,9 +71,8 @@ namespace Operational
                 Transform closestAnchor = FindClosestInputAnchorToAttatch(input.outputConduitAnchor, inputConduitAnchorList);
                 if (closestAnchor != null)
                 {
-                    LineRenderer lr = Instantiate(GlobalPrefabs.Instance.conduitPrefab, transform);
-                    lr.positionCount = 4;                   
-                        
+                    LineRenderer lr = Instantiate(GlobalPrefabs.Instance.conduitPrefab, transform);  
+
                     lr.SetPosition(0, input.outputConduitAnchor.position);
                     Vector3 foldPoint1 = new Vector3(input.outputConduitAnchor.position.x,
                                                      (input.outputConduitAnchor.position.y + closestAnchor.position.y) / 2,
@@ -77,7 +83,23 @@ namespace Operational
                                                      0);
                     lr.SetPosition(2, foldPoint2);
                     lr.SetPosition(3, closestAnchor.position);
+
+                    conduits.Add(lr);
                 }
+            }
+        }
+
+        private void UpdateConduits()
+        {
+            if (conduits == null || conduits.Count == 0)
+            {
+                return;
+            }
+
+            for (int i = 0; i < inputs.Count; i++) 
+            {
+                conduits[i].colorGradient.mode = GradientMode.Fixed;
+                conduits[i].colorGradient.colorKeys = new GradientColorKey[] { new GradientColorKey(inputs[i].Output ? Color.white : Color.gray, 0) };
             }
         }
 
@@ -150,6 +172,7 @@ namespace Operational
             }
 
             output = logicOperation.Execute(Inputs);
+            UpdateConduits();
             OnOutputChanged?.Invoke(output);
         }
     }
