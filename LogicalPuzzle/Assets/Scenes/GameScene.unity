@@ -632,6 +632,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conduitPrefab: {fileID: 4684732003161776318, guid: 52c7e96f9d210c542ab28d8dc3324103, type: 3}
+  trueConduitMaterial: {fileID: 2100000, guid: 44ecc67e98ff6214795efce208f350ac, type: 2}
+  falseConduitMaterial: {fileID: 2100000, guid: 4868454feb7566044926c19e21f52a6e, type: 2}
 --- !u!4 &1499496616
 Transform:
   m_ObjectHideFlags: 0
@@ -953,6 +955,10 @@ PrefabInstance:
     - target: {fileID: 6026143632221109343, guid: e68f54fba202f6a438f50fd997383fa4, type: 3}
       propertyPath: m_Name
       value: Level Demo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966906157710963407, guid: e68f54fba202f6a438f50fd997383fa4, type: 3}
+      propertyPath: output
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

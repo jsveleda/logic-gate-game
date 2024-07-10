@@ -60,6 +60,7 @@ namespace Operational
         private void Start()
         {
             DrawConduits();
+            UpdateOutput();
             UpdateConduits();
         }
 
@@ -87,7 +88,7 @@ namespace Operational
                     conduits.Add(lr);
                 }
             }
-        }
+        }           
 
         private void UpdateConduits()
         {
@@ -98,8 +99,7 @@ namespace Operational
 
             for (int i = 0; i < inputs.Count; i++) 
             {
-                conduits[i].colorGradient.mode = GradientMode.Fixed;
-                conduits[i].colorGradient.colorKeys = new GradientColorKey[] { new GradientColorKey(inputs[i].Output ? Color.white : Color.gray, 0) };
+                conduits[i].material = inputs[i].output ? GlobalPrefabs.Instance.trueConduitMaterial : GlobalPrefabs.Instance.falseConduitMaterial;
             }
         }
 
@@ -137,7 +137,7 @@ namespace Operational
 
         /// <summary>
         /// Se inscreve em cada um dos <see cref="inputs"/> para ser notificado
-        /// quando houver mudanças em seus valores.
+        /// quando houver mudanï¿½as em seus valores.
         /// </summary>
         private void SubscribeToInputChanges()
         {
@@ -153,10 +153,10 @@ namespace Operational
         }
 
         /// <summary>
-        /// Sempre que esse método for chamado, atualiza <see cref="output"/> 
-        /// executando a operação lógica deste elemento.
+        /// Sempre que esse mï¿½todo for chamado, atualiza <see cref="output"/> 
+        /// executando a operaï¿½ï¿½o lï¿½gica deste elemento.
         /// </summary>
-        /// <remarks> Lança um evento <see cref="OnOutputChanged"/> com o 
+        /// <remarks> Lanï¿½a um evento <see cref="OnOutputChanged"/> com o 
         /// novo valor de <see cref="output"/> 
         /// </remarks>
         private void OnInputChanged(bool newOutput)
@@ -166,12 +166,20 @@ namespace Operational
                 return;
             }
 
-            if (newOutput == output)
-            {
-                return;
-            }
+            // if (newOutput == output)
+            // {
+            //     return;
+            // }
 
-            output = logicOperation.Execute(Inputs);
+            UpdateOutput();
+        }
+
+        private void UpdateOutput()
+        {
+            if (inputs.Count > 0)
+            {
+                output = logicOperation.Execute(Inputs);
+            }
             UpdateConduits();
             OnOutputChanged?.Invoke(output);
         }
