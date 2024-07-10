@@ -404,8 +404,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 20, y: 30, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 450, y: 450, z: 450}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -450,7 +450,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: f10bec686da60ed4284d09fdd9421634, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bac6ef0138b1a44488f076b04bf9430c, type: 3}
   m_Color: {r: 0.7122642, g: 1, b: 0.9857761, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -768,7 +768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1556770366
 Transform:
   m_ObjectHideFlags: 0
@@ -955,10 +955,6 @@ PrefabInstance:
     - target: {fileID: 6026143632221109343, guid: e68f54fba202f6a438f50fd997383fa4, type: 3}
       propertyPath: m_Name
       value: Level Demo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966906157710963407, guid: e68f54fba202f6a438f50fd997383fa4, type: 3}
-      propertyPath: output
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

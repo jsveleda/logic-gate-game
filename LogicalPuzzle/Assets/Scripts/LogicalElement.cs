@@ -21,7 +21,7 @@ namespace Operational
         [Header("Places where inputs can attach conduits (if any)")]
         public List<Transform> inputConduitAnchorList;
 
-        private List<LineRenderer> conduits = new();
+        private LineRenderer[] conduits;
 
         public bool[] Inputs
         {
@@ -47,6 +47,13 @@ namespace Operational
                     return output;
                 }
 
+#if UNITY_EDITOR
+                // Gambiarra pra facilitar visualização no OnValidate
+                if (logicOperation == null)
+                {
+                    logicOperation = LogicOperationFactory.CreateLogicOperation(operationType);
+                }
+#endif
                 return logicOperation.Execute(Inputs);
             }
         }
@@ -59,40 +66,14 @@ namespace Operational
 
         private void Start()
         {
-            DrawConduits();
+            conduits = GetComponentsInChildren<LineRenderer>();
             UpdateOutput();
             UpdateConduits();
         }
 
-        #region Conduit
-        private void DrawConduits()
-        {
-            foreach (LogicalElement input in inputs)
-            {
-                Transform closestAnchor = FindClosestInputAnchorToAttatch(input.outputConduitAnchor, inputConduitAnchorList);
-                if (closestAnchor != null)
-                {
-                    LineRenderer lr = Instantiate(GlobalPrefabs.Instance.conduitPrefab, transform);  
-
-                    lr.SetPosition(0, input.outputConduitAnchor.position);
-                    Vector3 foldPoint1 = new Vector3(input.outputConduitAnchor.position.x,
-                                                     (input.outputConduitAnchor.position.y + closestAnchor.position.y) / 2,
-                                                     0);
-                    lr.SetPosition(1, foldPoint1);
-                    Vector3 foldPoint2 = new Vector3(closestAnchor.position.x,
-                                                     (input.outputConduitAnchor.position.y + closestAnchor.position.y) / 2,
-                                                     0);
-                    lr.SetPosition(2, foldPoint2);
-                    lr.SetPosition(3, closestAnchor.position);
-
-                    conduits.Add(lr);
-                }
-            }
-        }           
-
         private void UpdateConduits()
         {
-            if (conduits == null || conduits.Count == 0)
+            if (conduits == null || conduits.Length == 0)
             {
                 return;
             }
@@ -103,25 +84,10 @@ namespace Operational
             }
         }
 
-        private Transform FindClosestInputAnchorToAttatch(Transform outputConduitAnchor, List<Transform> inputConduitAnchor)
+        public List<LogicalElement> GetInputList()
         {
-            float minDistance = float.MaxValue;
-            Transform closestAnchor = null;
-
-            foreach (Transform inputAnchor in inputConduitAnchor)
-            {
-                float distance = Vector3.Distance(outputConduitAnchor.position, inputAnchor.position);
-                if (distance < minDistance)
-                {
-                    minDistance = distance;
-                    closestAnchor = inputAnchor;
-                }
-            }
-
-            return closestAnchor;
+            return inputs;
         }
-
-        #endregion
 
         public void ToggleOutput()
         {
@@ -180,6 +146,7 @@ namespace Operational
             {
                 output = logicOperation.Execute(Inputs);
             }
+
             UpdateConduits();
             OnOutputChanged?.Invoke(output);
         }

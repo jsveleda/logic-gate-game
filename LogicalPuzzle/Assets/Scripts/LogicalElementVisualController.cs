@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace Operational
 {
@@ -30,12 +31,23 @@ namespace Operational
             OnOutputChange(logicalElement.Output);
         }
 
-        private void OnValidate()
+#if UNITY_EDITOR
+        [MenuItem("Tools/Update Logical Elements Visual")]
+        public static void EditorUpdateVisual()
+        {
+            foreach (var visualController in FindObjectsOfType<LogicalElementVisualController>())
+            {
+                visualController.UpdateVisual();
+            }
+        }
+
+        public void UpdateVisual()
         {
             logicalElement = GetComponent<LogicalElement>();
             spriteRenderer = GetComponent<SpriteRenderer>();
-            OnOutputChange(false);
+            OnOutputChange(logicalElement.Output);
         }
+#endif
 
         private void OnOutputChange(bool value)
         {
