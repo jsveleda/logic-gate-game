@@ -882,6 +882,14 @@ PrefabInstance:
       propertyPath: inputs.Array.data[1]
       value: 
       objectReference: {fileID: 78770794065885555}
+    - target: {fileID: 5884431718962733728, guid: 4dcb81edf967c4840a95ba931120c6ec, type: 3}
+      propertyPath: m_Size.x
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884431718962733728, guid: 4dcb81edf967c4840a95ba931120c6ec, type: 3}
+      propertyPath: m_Size.y
+      value: 0.36
+      objectReference: {fileID: 0}
     - target: {fileID: 6668909192622256871, guid: 4dcb81edf967c4840a95ba931120c6ec, type: 3}
       propertyPath: m_Name
       value: OrGate
@@ -1135,6 +1143,14 @@ PrefabInstance:
       propertyPath: inputs.Array.data[1]
       value: 
       objectReference: {fileID: 5575754000395307837}
+    - target: {fileID: 5884431718962733728, guid: 86b289a9c130ea242a14fe0a2330debb, type: 3}
+      propertyPath: m_Size.x
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884431718962733728, guid: 86b289a9c130ea242a14fe0a2330debb, type: 3}
+      propertyPath: m_Size.y
+      value: 0.36
+      objectReference: {fileID: 0}
     - target: {fileID: 6668909192622256871, guid: 86b289a9c130ea242a14fe0a2330debb, type: 3}
       propertyPath: m_Name
       value: AndGate
@@ -1299,6 +1315,14 @@ PrefabInstance:
       propertyPath: inputs.Array.data[0]
       value: 
       objectReference: {fileID: 8966906157710963407}
+    - target: {fileID: 5884431718962733728, guid: 5d80a539011564b43bf3d5b92119d971, type: 3}
+      propertyPath: m_Size.x
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884431718962733728, guid: 5d80a539011564b43bf3d5b92119d971, type: 3}
+      propertyPath: m_Size.y
+      value: 0.36
+      objectReference: {fileID: 0}
     - target: {fileID: 6668909192622256871, guid: 5d80a539011564b43bf3d5b92119d971, type: 3}
       propertyPath: m_Name
       value: NotGate

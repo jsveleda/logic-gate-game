@@ -8,7 +8,10 @@ namespace Operational
         and,
         or,
         not,
-        xor
+        nand,
+        nor,
+        xor,
+        xnor
     }
 
     public static class LogicOperationFactory
@@ -21,7 +24,10 @@ namespace Operational
                 LogicOperationType.and => new AndOperation(),
                 LogicOperationType.or => new OrOperation(),
                 LogicOperationType.not => new NotOperation(),
+                LogicOperationType.nand => new NandOperation(),
+                LogicOperationType.nor => new NorOperation(),
                 LogicOperationType.xor => new XorOperation(),
+                LogicOperationType.xnor => new XnorOperation(),
                 _ => throw new ArgumentException("Invalid logic operation."),
             };
         }
