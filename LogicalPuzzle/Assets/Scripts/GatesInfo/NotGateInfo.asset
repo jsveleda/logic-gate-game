@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6943a9c8ca0d04f93837f8bf0b268e, type: 3}
+  m_Name: NotGateInfo
+  m_EditorClassIdentifier: 
+  operationType: 3
+  gateSprite: {fileID: -1088784868, guid: 1be15853a2b480749bd8b93953e20aa6, type: 3}
+  gateName: Porta Not
+  gateDescription: "**<size=48><b>Descri\xE7\xE3o</b></size>**\r\n\r\nA porta NOT
+    inverte o estado de sua entrada. Se a entrada for ligada (1), a sa\xEDda ser\xE1
+    desligada (0), e vice-versa. \r\n\r\n**<size=48><b>Tabela Verdade</b></size>**\r\n\r\n
+    \r\nEntrada | Sa\xEDda\r\n----------------\r\n    0   |   1\r\n    1   |   0"
