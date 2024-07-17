@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6675727000237805430}
   - component: {fileID: 5621091301755621403}
-  - component: {fileID: 2946478313493108543}
+  - component: {fileID: 3305079784405880934}
   - component: {fileID: 7024837045104465518}
   m_Layer: 0
   m_Name: Lamp
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2946478313493108543
+--- !u!114 &3305079784405880934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,12 +96,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5794333855270934546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371bcde2f2e0f744da628c02d9edb027, type: 3}
+  m_Script: {fileID: 11500000, guid: b8d7728d64ff4094b97ca04376a8a718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   operationType: 0
-  inputs:
-  - {fileID: 0}
+  inputs: []
   output: 0
   outputConduitAnchor: {fileID: 0}
   inputConduitAnchorList:

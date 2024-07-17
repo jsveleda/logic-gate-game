@@ -140,7 +140,7 @@ namespace Operational
             UpdateOutput();
         }
 
-        private void UpdateOutput()
+        protected virtual void UpdateOutput()
         {
             if (inputs.Count > 0)
             {
