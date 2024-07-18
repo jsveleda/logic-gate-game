@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour
 
     public void OnNextLevelButton()
     {
-        completionPopup.SetActive(false);
+        //completionPopup.SetActive(false);
         OnLevelCompleted();
     }
 }

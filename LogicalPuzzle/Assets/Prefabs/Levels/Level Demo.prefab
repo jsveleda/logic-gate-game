@@ -1045,19 +1045,7 @@ PrefabInstance:
     - target: {fileID: 970016448212412578, guid: b77d9f1a5a7edad4ea5586f33f931514, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 131319045, guid: 83e9aeb1126d01248a6667a53de3b12f, type: 3}
-    - target: {fileID: 970016448212412578, guid: b77d9f1a5a7edad4ea5586f33f931514, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 970016448212412578, guid: b77d9f1a5a7edad4ea5586f33f931514, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 970016448212412578, guid: b77d9f1a5a7edad4ea5586f33f931514, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: -2026192305, guid: 83e9aeb1126d01248a6667a53de3b12f, type: 3}
     - target: {fileID: 4615771216504763958, guid: b77d9f1a5a7edad4ea5586f33f931514, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.4
