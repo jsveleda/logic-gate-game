@@ -8,12 +8,21 @@ public class LevelSelectionController : MonoBehaviour
     public GameObject levelButtonPrefab;
     public Transform gridParent;
 
-    void Start()
+    private void Start()
     {
         LoadLevels();
     }
 
-    void LoadLevels()
+    public void Rebuild()
+    {
+        foreach (Transform button in gridParent.transform)
+        {
+            Destroy(button.gameObject);
+        }
+        LoadLevels();
+    }
+
+    private void LoadLevels()
     {
         for (int worldIndex = 0; worldIndex < levelDatabase.worlds.Count; worldIndex++)
         {

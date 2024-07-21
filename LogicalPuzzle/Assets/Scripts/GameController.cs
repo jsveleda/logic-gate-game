@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
         Instantiate(levelData.levelPrefab, levelParent);
     }
 
-    public void OnLevelCompleted()
+    private void OnLevelCompleted()
     {
         LevelManager.Instance.LevelCompleted();
     }   
@@ -35,5 +35,12 @@ public class GameController : MonoBehaviour
     {
         //completionPopup.SetActive(false);
         OnLevelCompleted();
+        LevelManager.Instance.LoadNextLevel();
+    }
+
+    public void OnHomeButton()
+    {
+        OnLevelCompleted();
+        SceneLoader.Instance.LoadScene(0);
     }
 }

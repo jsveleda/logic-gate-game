@@ -44,10 +44,9 @@ public class LevelManager : MonoBehaviour
     {
         GetCurrentLevel().isCompleted = true;
         // Update de dados salvos, se necessário
-        LoadNextLevel();
     }
 
-    void LoadNextLevel()
+    public void LoadNextLevel()
     {
         if (currentLevelIndex < levelDatabase.worlds[currentWorldIndex].list.Count - 1)
         {
@@ -60,6 +59,17 @@ public class LevelManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(0);
+        }
+    }
+
+    public void ResetProgress()
+    {
+        foreach (ListWrapper<LevelData> world in levelDatabase.worlds)
+        {
+            foreach(LevelData level in world.list)
+            {
+                level.isCompleted = false;
+            }
         }
     }
 }
