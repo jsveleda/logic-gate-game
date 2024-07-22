@@ -7,7 +7,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewLevelData", menuName = "Level Data", order = 50)]
 public class LevelData : ScriptableObject
 {
-    [HideInInspector]
     public bool isCompleted;
 
     public GameObject levelPrefab;
