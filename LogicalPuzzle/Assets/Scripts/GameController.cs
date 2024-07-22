@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI levelTitle;
     public GameObject completionPopup;
 
+    public Drawer gatesDrawer;
+
     void Awake()
     {
         LoadLevel();
@@ -19,6 +21,12 @@ public class GameController : MonoBehaviour
         LevelData levelData = LevelManager.Instance.GetCurrentLevel();
         levelTitle.text = "Level " + LevelManager.Instance.GetCurrentLevelName();
         Instantiate(levelData.levelPrefab, levelParent);
+
+        if (levelData.useDrawer)
+        {
+            gatesDrawer.gameObject.SetActive(true);
+            gatesDrawer.SetDrawerOptions(levelData.drawerOptions);
+        }
     }
 
     private void OnLevelCompleted()
@@ -28,6 +36,7 @@ public class GameController : MonoBehaviour
     
     public void ShowCompletionPopup()
     {
+        gatesDrawer.Close();
         completionPopup.SetActive(true);
     }
 

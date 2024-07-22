@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Operational;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +15,13 @@ public class Drawer : MonoBehaviour, IPointerClickHandler
 
     [SerializeField]
     private float animateSpeed = 1;
+
+    [SerializeField]
+    private DraggableGate draggableGatePrefab;
+    [SerializeField]
+    private Transform draggableGatesParent;
+
+    private List<GateInfo> options;
 
     private float middleHeight;
 
@@ -39,7 +48,7 @@ public class Drawer : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            StartCoroutine(Animate(closedHeight, animateSpeed));
+            Close();
         }
     }
 
@@ -61,5 +70,31 @@ public class Drawer : MonoBehaviour, IPointerClickHandler
 
             yield return null;
         }
+    }
+
+    public void SetDrawerOptions(List<GateInfo> drawerOptions)
+    {
+        options = drawerOptions;
+        
+        foreach (GateInfo gateInfo in drawerOptions)
+        {
+            DraggableGate draggableGate = Instantiate(draggableGatePrefab, draggableGatesParent);
+            draggableGate.Initialize(gateInfo);
+            draggableGate.OnStartDrag += OnStartDrag;
+        }
+    }
+
+    private void OnStartDrag(GateInfo gateInfo)
+    {
+        DraggableGate draggableGate = Instantiate(draggableGatePrefab, draggableGatesParent);
+        draggableGate.Initialize(gateInfo);
+        draggableGate.OnStartDrag += OnStartDrag;
+
+        Close();
+    }
+
+    public void Close()
+    {
+        StartCoroutine(Animate(closedHeight, animateSpeed));
     }
 }

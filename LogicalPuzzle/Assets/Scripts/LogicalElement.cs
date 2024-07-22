@@ -13,7 +13,7 @@ namespace Operational
         [SerializeField]
         protected bool output;
 
-        private LogicOperation logicOperation;
+        protected LogicOperation logicOperation;
         public event Action<bool> OnOutputChanged;
 
         [Header("Places from where conduits can leave (if any)")]
@@ -58,13 +58,13 @@ namespace Operational
             }
         }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             SubscribeToInputChanges();
             logicOperation = LogicOperationFactory.CreateLogicOperation(operationType);
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             conduits = GetComponentsInChildren<LineRenderer>();
             UpdateOutput();
@@ -105,7 +105,7 @@ namespace Operational
         /// Se inscreve em cada um dos <see cref="inputs"/> para ser notificado
         /// quando houver mudan�as em seus valores.
         /// </summary>
-        private void SubscribeToInputChanges()
+        protected void SubscribeToInputChanges()
         {
             if (inputs == null || inputs.Count == 0)
             {

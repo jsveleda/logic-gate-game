@@ -15,6 +15,7 @@ public class CircuitManager : MonoBehaviour
 
         foreach (LogicalElement logicalElement in logicalElements)
         {
+            Debug.Log($"Drawing conduits for {logicalElement.name}");
             foreach (LogicalElement input in logicalElement.GetInputList())
             {
                 Transform closestAnchor = FindClosestInputAnchorToAttatch(input.outputConduitAnchor, logicalElement.inputConduitAnchorList);

@@ -14,17 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worlds:
   - list:
-    - isCompleted: 0
-      levelPrefab: {fileID: 6438566461577407972, guid: 691c32d3b45293249bea00f95c64b09b, type: 3}
-    - isCompleted: 0
-      levelPrefab: {fileID: 6026143632221109343, guid: bf2d7e7c07d75da4295cfc66c9878368, type: 3}
-    - isCompleted: 0
-      levelPrefab: {fileID: 585365007783820557, guid: 4fef15287aa66b74e84cf2593dd0994e, type: 3}
+    - {fileID: 11400000, guid: ed6d61e9148242b41baa73ed3894ad4e, type: 2}
+    - {fileID: 11400000, guid: 01e8a9fa53ae59948bb37786739d9fc8, type: 2}
+    - {fileID: 11400000, guid: ffbf37a4fab6bd247b15883f60f901f5, type: 2}
+    - {fileID: 11400000, guid: 4e6fe03bcdbfb8a42a189030a6cbb374, type: 2}
   - list:
-    - isCompleted: 0
-      levelPrefab: {fileID: 4235766652133350567, guid: b3bcebfa8f720384ea1f5b78f0fd6673, type: 3}
+    - {fileID: 11400000, guid: 89575596d11016c4199073c628b3dc89, type: 2}
+    - {fileID: 11400000, guid: a52500d09739564489d40cff6ded4352, type: 2}
   - list:
-    - isCompleted: 0
-      levelPrefab: {fileID: 6933734236890490591, guid: 1ea9dbc42a9f1324bb00e05601383fee, type: 3}
-    - isCompleted: 0
-      levelPrefab: {fileID: 6026143632221109343, guid: e68f54fba202f6a438f50fd997383fa4, type: 3}
+    - {fileID: 11400000, guid: 4a285331b4cdc0340a4a81ac33500843, type: 2}
